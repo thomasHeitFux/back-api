@@ -21,7 +21,7 @@ const getApiInfo = async () => {
                 id: pokemon.data.id,
                 name: pokemon.data.name,
                 height: pokemon.data.height,
-                weight: pokemon.data.weight,
+                width: pokemon.data.width,
                 hp: pokemon.data.stats[0].base_stat,
                 atack: pokemon.data.stats[1].base_stat,
                 defense: pokemon.data.stats[2].base_stat,
