@@ -2,19 +2,17 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const {
-  DATABASE_URL
-} = process.env;
+const { DATABASE_URL } = process.env;
 
 const sequelize = new Sequelize(DATABASE_URL, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//CONFIGURACION ADICIONAL
-dialectOptions:{
-  ssl:{require:true,
-    rejectUnauthorized:false
-  }
-},
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 const basename = path.basename(__filename);
 
@@ -48,3 +46,5 @@ module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };
+
+
