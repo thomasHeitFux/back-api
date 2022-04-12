@@ -118,7 +118,7 @@ router.post('/pokemons', async (req, res) => {
 if(!height|| !width || !hp || !atack || !defense || !speed || !types || !name){
     res.status(404).send("missing data")
 }else{
-    /(www|http:|https:)+[^\s]+[\w]/.test(img)?img:img = "https://i.pinimg.com/originals/70/a6/9b/70a69b357b7ea034151f45e82425367f.png"
+    // /(www|http:|https:)+[^\s]+[\w]/.test(img)?img:img = "https://i.pinimg.com/originals/70/a6/9b/70a69b357b7ea034151f45e82425367f.png"
     
 
     try {
