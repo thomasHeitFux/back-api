@@ -108,18 +108,18 @@ router.get('/types', (req, res) => {
         .then(result=>result.map(e=>e.name))
         .then(names=>names.forEach(e => { return Type.findOrCreate({where:{name:e}})}))
         .then(types=>Type.findAll())
-        .then((types)=> res.status(200).send(types))
-    
-    
-    //  Type.findAll()
-    // 
-    
+        .then((types)=> res.status(200).send(types))  
 })
 
 // -----------------------------------------------------------POST POKEMON
 // let idbd = 100;
 router.post('/pokemons', async (req, res) => {
     const { img, height, width, hp, atack, defense, speed, types, createInDb, name } = req.body;
+if(!height|| !width || !hp || !atack || !defense || !speed || !types || !name){
+    res.status(404).send("missing data")
+}else{
+        img?img:img = "https://i.pinimg.com/originals/70/a6/9b/70a69b357b7ea034151f45e82425367f.png"
+    
 
     try {
         let newPoke = await Pokemon.create(
@@ -145,7 +145,7 @@ router.post('/pokemons', async (req, res) => {
         console.log(error)
         res.status(404).send(error)
     }
-
+}
 })
 
 //DELETEAR
