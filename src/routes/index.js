@@ -27,7 +27,7 @@ const getApiInfo = async () => {
                 defense: pokemon.data.stats[2].base_stat,
                 speed: pokemon.data.stats[5].base_stat,
                 type: pokemon.data.types.map(p => p.type.name),
-                img: pokemon.data.sprites.front_transparent
+                img: pokemon.data.sprites.front_shiny
             }
         }))
     return result
