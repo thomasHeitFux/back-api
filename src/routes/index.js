@@ -90,26 +90,26 @@ router.get('/pokemons/:id', async (req, res) => {
 })
 
 //---------------------------------------------------------GET POKEMONS TYPE
-// router.get('/types', async (req, res) => {
-//     const apiTypes = await axios.get('https://pokeapi.co/api/v2/type')
-//     const pokeTypes = apiTypes.data.results.map(e =>e.name)
-
-//    const allTypes = pokeTypes.forEach(e => {
-//     return  Type.findOrCreate({
-//         where: { name: e }
-//     })})
-//     const types = await Type.findAll()
-// res.status(200).send(types)
-// })
-
-router.get('/types', (req, res) => {
-  axios.get('https://pokeapi.co/api/v2/type')
-        .then((json) => json.data.results)
-        .then(result=>result.map(e=>e.name))
-        .then(names=>names.forEach(e => { return Type.findOrCreate({where:{name:e}})}))
-        .then(types=>Type.findAll())
-        .then((types)=> res.status(200).send(types))  
+router.get('/types', async (req, res) => {
+    const apiTypes = await axios.get('https://pokeapi.co/api/v2/type')
+    const pokeTypes = apiTypes.data.results.map(e =>e.name)
+    console.log(pokeTypes);
+   const allTypes = pokeTypes.forEach(e => {
+    return  Type.findOrCreate({
+        where: { name: e }
+    })})
+    const types = await Type.findAll()
+res.status(200).send(types)
 })
+
+// router.get('/types', (req, res) => {
+//   axios.get('https://pokeapi.co/api/v2/type')
+//         .then((json) => json.data.results)
+//         .then(result=>result.map(e=>e.name))
+//         .then(names=>names.forEach(e => { return Type.findOrCreate({where:{name:e}})}))
+//         .then(types=>Type.findAll())
+//         .then((types)=> res.status(200).send(types))  
+// })
 
 // -----------------------------------------------------------POST POKEMON
 // let idbd = 100;
